@@ -16,7 +16,7 @@ namespace eSalex.Controllers
             Models.OrderService orderService= new Models.OrderService();
             //orderService.InsertOrder(new Models.Order() { CustId = "001", CustName = "叡揚資訊", EmpId = 1, EmpName = "王小明", OrderDate = DateTime.Parse("2015/11/08") });
             ViewBag.order=orderService.GetOrderByCondtioin();
-            return View();
+            return View();//
         }
 
         [HttpGet()]
