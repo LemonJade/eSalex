@@ -13,6 +13,19 @@ namespace eSalex.Controllers
         public Models.OrderService service = new Models.OrderService();
         public ActionResult Index()
         {
+            List<SelectListItem> custData = new List<SelectListItem>();
+            custData.Add(new SelectListItem()
+            {
+                Text = "叡揚資訊",
+                Value = "1"
+            });
+            custData.Add(new SelectListItem()
+            {
+                Text = "網軟資訊",
+                Value = "2"
+            });
+
+            ViewBag.custData = custData;
             //orderService.InsertOrder(new Models.Order() { CustId = "001", CustName = "叡揚資訊", EmpId = 1, EmpName = "王小明", OrderDate = DateTime.Parse("2015/11/08") });
             ViewBag.order=service.GetOrderByCondtioin();
             return View();//

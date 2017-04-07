@@ -10,9 +10,10 @@
     <title>Index</title>
 </head>
 <body>
+    @Html.DropDownList("custData",(List<SelectListItem>)ViewBag.custData)
     <div>
         @{
-            foreach (var item in ViewBag.order)
+            foreach (var item in (List<eSalex.Models.Order>)ViewBag.order)
             {
                 @item.CustId
                 @item.CustName
