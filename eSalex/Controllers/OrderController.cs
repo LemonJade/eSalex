@@ -10,24 +10,10 @@ namespace eSalex.Controllers
     {
         //
         // GET: /Order/
-        public Models.OrderService service = new Models.OrderService();
         public ActionResult Index()
         {
-            List<SelectListItem> custData = new List<SelectListItem>();
-            custData.Add(new SelectListItem()
-            {
-                Text = "叡揚資訊",
-                Value = "1"
-            });
-            custData.Add(new SelectListItem()
-            {
-                Text = "網軟資訊",
-                Value = "2"
-            });
-
-            ViewBag.custData = custData;
-            //orderService.InsertOrder(new Models.Order() { CustId = "001", CustName = "叡揚資訊", EmpId = 1, EmpName = "王小明", OrderDate = DateTime.Parse("2015/11/08") });
-            ViewBag.order=service.GetOrderByCondtioin();
+            Models.OrderService service = new Models.OrderService();
+            ViewBag.order = service.GetOrderById("10250");
             return View();//
         }
 
@@ -40,7 +26,7 @@ namespace eSalex.Controllers
         [HttpPost()]
         public ActionResult InsertOrder(Models.Order o)
         {
-            ViewBag.order = o;
+            Models.OrderService service = new Models.OrderService();
             service.InsertOrder(o);
             if (ModelState.IsValid)
             {
@@ -52,7 +38,8 @@ namespace eSalex.Controllers
         }
 
         public JsonResult showJsonResult(int id)
-        {
+    {
+            Models.OrderService service = new Models.OrderService();
             ViewBag.order = service.GetOrderByCondtioin();
             return this.Json(service.GetOrderById(id.ToString()), JsonRequestBehavior.AllowGet);
         }

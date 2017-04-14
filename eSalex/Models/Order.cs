@@ -57,7 +57,7 @@ namespace eSalex.Models
         /// <summary>
         /// 出貨公司名稱
         /// </summary>
-        public int ShipperName { get; set; }
+        public string ShipperName { get; set; }
 
         /// <summary>
         /// 運費
